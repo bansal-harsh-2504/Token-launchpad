@@ -1,0 +1,13 @@
+show tokens owned by user
+
+add feature to send other tokens
+
+display public Key and link of explorer.solana after creating mint and ata
+
+feature to mint tokens
+
+feature to create ata seperately
+
+Vanity wallet generator
+
+claimyoursol: Close solana account
