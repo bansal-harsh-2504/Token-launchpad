@@ -6,7 +6,6 @@ import {
   TOKEN_2022_PROGRAM_ID,
   getOrCreateAssociatedTokenAccount,
   createTransferInstruction,
-  TOKEN_PROGRAM_ID,
 } from "@solana/spl-token";
 
 const SendAssociatedToken = () => {
@@ -38,7 +37,7 @@ const SendAssociatedToken = () => {
         const ata = getAssociatedTokenAddressSync(
           publicKey,
           wallet.publicKey,
-          false,
+          true,
           TOKEN_2022_PROGRAM_ID
         );
         return {
@@ -60,7 +59,7 @@ const SendAssociatedToken = () => {
       "Enter reciepient's public key: "
     ).toString();
 
-    let amount = Number(prompt("Amount: "));
+    let amount = parseFloat(prompt("Amount: "));
 
     if (amount <= 0) {
       console.log("Invalid amount!");
@@ -85,10 +84,10 @@ const SendAssociatedToken = () => {
       wallet.publicKey,
       mint,
       receiverPublicKey,
-      false,
+      true,
       undefined,
       undefined,
-      TOKEN_PROGRAM_ID
+      TOKEN_2022_PROGRAM_ID
     );
 
     const transaction = new Transaction().add(
@@ -96,7 +95,9 @@ const SendAssociatedToken = () => {
         ata,
         receiverATA.address,
         wallet.publicKey,
-        transferAmount
+        transferAmount,
+        [],
+        TOKEN_2022_PROGRAM_ID
       )
     );
 
